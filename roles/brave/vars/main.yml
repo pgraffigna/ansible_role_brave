@@ -1,0 +1,5 @@
+---
+home: /home/quentin
+usuario: quentin
+url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+repo: https://brave-browser-apt-release.s3.brave.com/

@@ -1,0 +1,31 @@
+---
+- name: Instalación de dependencias
+  apt: 
+    name: ['software-properties-common','apt-transport-https']
+    update_cache: yes
+
+- name: Importar la llave
+  apt_key:
+    url: "{{ url }}" 
+    state: present
+  
+- name: Agregar repo
+  apt_repository:
+    repo: deb "{{ repo }}" stable main
+    state: present
+    update_cache: yes
+
+- name: Instalar Brave
+  apt:
+    name: brave-browser
+    state: present
+  
+- name: Copia los scripts
+  copy:
+    src: "{{ item }}"
+    dest: "{{ home }}"
+    owner: "{{ usuario }}"
+    group: "{{ usuario }}"
+    mode: 0775
+  with_items:
+    - 00-rutina_web.sh
